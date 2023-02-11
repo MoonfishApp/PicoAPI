@@ -8,6 +8,6 @@
 import Foundation
 
 struct APIKey {
-    let key = "<YOUR KEY HERE>"
-    let organization = "personal"
+    static let key = "<YOUR KEY HERE>"
+    static let organization = "personal"
 }
