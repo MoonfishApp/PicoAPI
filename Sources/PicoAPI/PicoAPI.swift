@@ -1,8 +1,10 @@
+import Foundation
+import AWSLambdaRuntime
 
-public struct PicoAPI {
-    public private(set) var text = "Hello, World!"
+@main
+struct PicoAPI: SimpleLambdaHandler {
     
-    public static func main() {
-        
+    func handle(_ name: String, context: LambdaContext) async throws -> String {
+        "Hello, \(name)"
     }
 }
