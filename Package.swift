@@ -13,12 +13,14 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/swift-server/swift-aws-lambda-runtime.git", from: "1.0.0-alpha"),
         .package(url: "https://github.com/swift-server/swift-aws-lambda-events.git", branch: "main"),
+        .package(url: "https://github.com/dylanshine/openai-kit", branch: "main")
 
     ],
     targets: [
         .executableTarget(name: "PicoAPI", dependencies: [
           .product(name: "AWSLambdaRuntime", package: "swift-aws-lambda-runtime"),
           .product(name: "AWSLambdaEvents", package: "swift-aws-lambda-events"),
+          .product(name: "OpenAIKit", package: "openai-kit"),
         ]),
         .testTarget(
             name: "PicoAPITests",

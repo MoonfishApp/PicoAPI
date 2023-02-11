@@ -1,6 +1,7 @@
 import Foundation
 import AWSLambdaRuntime
 import AWSLambdaEvents
+import OpenAIKit
 
 // Request, uses Codable for transparent JSON encoding
 struct Request: Codable {
