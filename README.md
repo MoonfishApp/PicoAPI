@@ -16,6 +16,6 @@ To build this package, run the command:
 curl \
     --header "Content-Type: application/json" \
   --request POST \
-  --data '{"name": "Bruno"}' \
+  --data '{"prompt": "Tell me a joke"}' \
   http://localhost:7000/invoke
   ```

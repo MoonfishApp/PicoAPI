@@ -5,7 +5,7 @@ import OpenAIKit
 
 // Request, uses Codable for transparent JSON encoding
 struct Request: Codable {
-  let name: String
+  let prompt: String
 }
 
 // Response, uses Codable for transparent JSON encoding
@@ -16,17 +16,18 @@ struct Response: Codable {
 @main
 struct PicoAPI: SimpleLambdaHandler {
     
+    let client = OpenAIClient()
+    
     func handle(_ request: Request, context: LambdaContext) async throws -> Response {
         print("Received: \(request)")
-//        let response = Response(message: "Hello, \(request.name)")
-//        print("Response: \(response)")
-        let completion = try await openAICall()
+        let completion = try await openAICall(prompt: request.prompt)
         let response = Response(message: completion)
+        print("Response: \(response)")
         return response
     }
     
-    func openAICall() async throws -> String {
-        let completion = try await OpenAIClient().completion(prompt: "tell me a joke")
+    func openAICall(prompt: String) async throws -> String {
+        let completion = try await client.completion(prompt: prompt)
         return completion
     }
 }
