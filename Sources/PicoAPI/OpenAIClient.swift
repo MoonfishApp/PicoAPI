@@ -33,10 +33,12 @@ final class OpenAIClient {
                 temperature: temperature
             )
             guard let result = completion.choices.first?.text else {
+                print("Client error empty result")
                 throw ClientError.emptyResult
             }
             return Response(completion: result.trimmingCharacters(in: .whitespacesAndNewlines), OpenAIErrorMessage: nil)
         } catch let error as APIErrorResponse {
+            print("OpenAI error: \(error.error.type): \(error.error.message)")
             return Response(completion: nil, OpenAIErrorMessage: error.error.message)
         }        
     }

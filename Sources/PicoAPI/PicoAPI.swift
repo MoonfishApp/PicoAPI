@@ -1,7 +1,6 @@
 import Foundation
 import AWSLambdaRuntime
 import AWSLambdaEvents
-import OpenAIKit
 import NIOFoundationCompat
 
 @main
