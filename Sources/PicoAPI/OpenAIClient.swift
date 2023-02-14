@@ -16,13 +16,13 @@ enum ClientError: Error {
 }
 
 final class OpenAIClient {
-    static let apiKey = APIKey.key
-    static let organization = APIKey.organization
+//    static let apiKey = APIKey.key
+//    static let organization = APIKey.organization
     private let openAI: OpenAIKit.Client
     
-    init() {
+    init(apiKey: String, organization: String) {
         let httpClient = HTTPClient(eventLoopGroupProvider: .createNew)
-        let configuration = Configuration(apiKey: OpenAIClient.apiKey, organization: OpenAIClient.organization)
+        let configuration = Configuration(apiKey: apiKey, organization: organization)
         openAI = OpenAIKit.Client(httpClient: httpClient, configuration: configuration)
     }
     

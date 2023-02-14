@@ -14,19 +14,25 @@ struct Response: Codable {
   let message: String
 }
 
-//typealias In = APIGatewayV2Request
-//typealias Out = API
-
 @main
 struct PicoAPI: SimpleLambdaHandler {
     
-    let client = OpenAIClient()
+    let client: OpenAIClient
+    
+    init() {
+        guard let apiKey = ProcessInfo.processInfo.environment["OPENAI_KEY"],
+              let org = ProcessInfo.processInfo.environment["OPENAI_ORG"] else {
+            print("Error: missing environment vars")
+            client = OpenAIClient(apiKey: "", organization: "")
+            return
+        }
+        client = OpenAIClient(apiKey: apiKey, organization: org)
+    }
     
     // http://127.0.0.1:7000/invoke
     // swift package --disable-sandbox archive
     // Can we use environmental vars for the OpenAI API key?
     func handle(_ request: Request, context: LambdaContext) async throws -> Response {
-//        let response = Response(message: String(request.prompt.reversed()))
         print("Received: \(request)")
         let completion = try await openAICall(prompt: request.prompt)
         let response = Response(message: completion)

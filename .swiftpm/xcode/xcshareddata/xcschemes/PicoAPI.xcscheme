@@ -76,8 +76,18 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
+            key = "OPENAI_ORG"
+            value = "org-jSkwK2lKyaQ2KCgJiFsjZVrE"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "LOCAL_LAMBDA_SERVER_ENABLED"
             value = "true"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "OPENAI_KEY"
+            value = "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"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
