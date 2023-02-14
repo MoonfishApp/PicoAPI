@@ -4,16 +4,6 @@ import AWSLambdaEvents
 import OpenAIKit
 import NIOFoundationCompat
 
-// Request, uses Codable for transparent JSON encoding
-struct Request: Codable {
-  let prompt: String
-}
-
-// Response, uses Codable for transparent JSON encoding
-struct Response: Codable {
-  let message: String
-}
-
 @main
 struct PicoAPI: SimpleLambdaHandler {
     
@@ -31,17 +21,16 @@ struct PicoAPI: SimpleLambdaHandler {
     
     // http://127.0.0.1:7000/invoke
     // swift package --disable-sandbox archive
-    // Can we use environmental vars for the OpenAI API key?
     func handle(_ request: Request, context: LambdaContext) async throws -> Response {
         print("Received: \(request)")
-        let completion = try await openAICall(prompt: request.prompt)
-        let response = Response(message: completion)
+        let completion = try await openAICall(request: request)
+        let response = Response(completion: completion)
         print("Response: \(response)")
         return response
     }
     
-    func openAICall(prompt: String) async throws -> String {
-        let completion = try await client.completion(prompt: prompt)
+    func openAICall(request: Request) async throws -> String {
+        let completion = try await client.completion(prompt: request.prompt, maxTokens: request.maxTokens, temperature: request.temperature)
         return completion
     }
 }
