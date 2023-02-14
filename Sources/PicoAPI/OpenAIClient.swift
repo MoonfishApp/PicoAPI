@@ -26,10 +26,12 @@ final class OpenAIClient {
         openAI = OpenAIKit.Client(httpClient: httpClient, configuration: configuration)
     }
     
-    func completion(prompt: String) async throws -> String {
+    func completion(prompt: String, maxTokens: Int = 100, temperature: Double = 1.0) async throws -> String {
         let completion = try await openAI.completions.create(
-            model: Model.GPT3.davinci,
-            prompts: [prompt]
+            model: Model.GPT3.textDavinci003,
+            prompts: [prompt],
+            maxTokens: maxTokens,
+            temperature: temperature
         )
         guard let result = completion.choices.first?.text else {
             throw ClientError.emptyResult
