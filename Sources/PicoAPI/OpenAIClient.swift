@@ -16,8 +16,6 @@ enum ClientError: Error {
 }
 
 final class OpenAIClient {
-//    static let apiKey = APIKey.key
-//    static let organization = APIKey.organization
     private let openAI: OpenAIKit.Client
     
     init(apiKey: String, organization: String) {
