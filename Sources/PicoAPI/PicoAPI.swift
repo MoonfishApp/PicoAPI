@@ -24,12 +24,11 @@ struct PicoAPI: SimpleLambdaHandler {
     func handle(_ request: Request, context: LambdaContext) async throws -> Response {
         print("Received: \(request)")
         let completion = try await openAICall(request: request)
-        let response = Response(completion: completion)
-        print("Response: \(response)")
-        return response
+        print("response: \(completion)")
+        return completion
     }
     
-    func openAICall(request: Request) async throws -> String {
+    func openAICall(request: Request) async throws -> Response {
         let completion = try await client.completion(prompt: request.prompt, maxTokens: request.maxTokens, temperature: request.temperature)
         return completion
     }

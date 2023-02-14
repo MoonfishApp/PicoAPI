@@ -15,5 +15,6 @@ struct Request: Codable {
 }
 
 struct Response: Codable {
-    let completion: String
+    let completion: String?
+    let OpenAIErrorMessage: String?
 }

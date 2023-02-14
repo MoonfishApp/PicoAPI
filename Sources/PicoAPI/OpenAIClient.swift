@@ -26,38 +26,20 @@ final class OpenAIClient {
         openAI = OpenAIKit.Client(httpClient: httpClient, configuration: configuration)
     }
     
-    func completion(prompt: String, maxTokens: Int = 100, temperature: Double = 1.0) async throws -> String {
-        let completion = try await openAI.completions.create(
-            model: Model.GPT3.textDavinci003,
-            prompts: [prompt],
-            maxTokens: maxTokens,
-            temperature: temperature
-        )
-        guard let result = completion.choices.first?.text else {
-            throw ClientError.emptyResult
-        }
-        return result
+    func completion(prompt: String, maxTokens: Int = 100, temperature: Double = 1.0) async throws -> Response {
+        do {
+            let completion = try await openAI.completions.create(
+                model: Model.GPT3.textDavinci003,
+                prompts: [prompt],
+                maxTokens: maxTokens,
+                temperature: temperature
+            )
+            guard let result = completion.choices.first?.text else {
+                throw ClientError.emptyResult
+            }
+            return Response(completion: result.trimmingCharacters(in: .whitespacesAndNewlines), OpenAIErrorMessage: nil)
+        } catch let error as APIErrorResponse {
+            return Response(completion: nil, OpenAIErrorMessage: error.error.message)
+        }        
     }
-    
-    /*
-     public func create(
-         model: ModelID,
-         prompts: [String] = [],
-         suffix: String? = nil,
-         maxTokens: Int = 16,
-         temperature: Double = 1.0,
-         topP: Double = 1.0,
-         n: Int = 1,
-         stream: Bool = false,
-         logprobs: Int? = nil,
-         echo: Bool = false,
-         stops: [String] = [],
-         presencePenalty: Double = 0.0,
-         frequencyPenalty: Double = 0.0,
-         bestOf: Int = 1,
-         logitBias: [String : Int] = [:],
-         user: String? = nil
-     ) async throws -> Completion {
-     */
-//    try await OpenAIClient().completion(prompt: "what is the answer to life, the universe and everything?")
 }
