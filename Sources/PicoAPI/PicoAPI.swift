@@ -1,6 +1,5 @@
 import Foundation
 import AWSLambdaRuntime
-import AWSLambdaEvents
 import NIOFoundationCompat
 
 @main
@@ -28,7 +27,7 @@ struct PicoAPI: SimpleLambdaHandler {
     }
     
     func openAICall(request: Request) async throws -> Response {
-        let completion = try await client.completion(prompt: request.prompt, maxTokens: request.maxTokens, temperature: request.temperature)
+        let completion = try await client.completion(prompt: request.prompt, maxTokens: request.maxTokens, temperature: request.temperature, userID: request.userID)
         return completion
     }
 }

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-server/async-http-client.git",
       "state" : {
-        "revision" : "7f05a8da46cc2a4ab43218722298b81ac7a08031",
-        "version" : "1.13.2"
+        "revision" : "864c8d9e0ead5de7ba70b61c8982f89126710863",
+        "version" : "1.15.0"
       }
     },
     {
@@ -15,7 +15,7 @@
       "location" : "https://github.com/ronaldmannak/openai-kit",
       "state" : {
         "branch" : "main",
-        "revision" : "ac0cb19103d3f7d444515610912198a9b89eb186"
+        "revision" : "ed9cb1a714241689566f53c8f7625b92a24b33f1"
       }
     },
     {
@@ -25,15 +25,6 @@
       "state" : {
         "revision" : "ff3d2212b6b093db7f177d0855adbc4ef9c5f036",
         "version" : "1.0.3"
-      }
-    },
-    {
-      "identity" : "swift-aws-lambda-events",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swift-server/swift-aws-lambda-events.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "8e836e0893bc906fafd6b09e1c46a7efcc441fd5"
       }
     },
     {
@@ -95,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio-http2.git",
       "state" : {
-        "revision" : "22757ac305f3d44d2b99ba541193ff1d64e77d00",
-        "version" : "1.24.1"
+        "revision" : "8dcda6828844022028025241e4e7d52cbbe250de",
+        "version" : "1.25.0"
       }
     },
     {
