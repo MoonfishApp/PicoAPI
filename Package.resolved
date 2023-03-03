@@ -15,7 +15,7 @@
       "location" : "https://github.com/ronaldmannak/openai-kit",
       "state" : {
         "branch" : "main",
-        "revision" : "ed9cb1a714241689566f53c8f7625b92a24b33f1"
+        "revision" : "0ebaf8b1b515a48ec4420467edf5b8491f6dff23"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/swift-server/swift-aws-lambda-runtime.git",
       "state" : {
         "branch" : "main",
-        "revision" : "81762b0e45182bf10011f957ce95e5acc7aaf01b"
+        "revision" : "fb860605a8577a397def5ef487ecea46c11c824c"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio-extras.git",
       "state" : {
-        "revision" : "98378d1fe56527761c180f70b2d66a7b2307fc39",
-        "version" : "1.16.0"
+        "revision" : "d75ed708d00353acf173ca23018b6bd46f949464",
+        "version" : "1.17.0"
       }
     },
     {
@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio-http2.git",
       "state" : {
-        "revision" : "8dcda6828844022028025241e4e7d52cbbe250de",
-        "version" : "1.25.0"
+        "revision" : "38feec96bcd929028939107684073554bf01abeb",
+        "version" : "1.25.2"
       }
     },
     {
