@@ -12,10 +12,10 @@
     {
       "identity" : "openai-kit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ronaldmannak/openai-kit",
+      "location" : "https://github.com/dylanshine/openai-kit",
       "state" : {
         "branch" : "main",
-        "revision" : "0ebaf8b1b515a48ec4420467edf5b8491f6dff23"
+        "revision" : "2a8ffe92118f4e78dc60fc4942b7a876cb0ce5cd"
       }
     },
     {

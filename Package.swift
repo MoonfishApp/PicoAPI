@@ -14,7 +14,8 @@ let package = Package(
 //        .package(url: "https://github.com/swift-server/swift-aws-lambda-runtime.git", from: "1.0.0-alpha"),
         .package(url: "https://github.com/swift-server/swift-aws-lambda-runtime.git", branch: "main"),
 //        .package(url: "https://github.com/swift-server/swift-aws-lambda-events.git", branch: "main"),
-        .package(url: "https://github.com/ronaldmannak/openai-kit", branch: "main")
+//        .package(url: "https://github.com/ronaldmannak/openai-kit", branch: "main")
+        .package(url: "https://github.com/dylanshine/openai-kit", branch: "main")
 
     ],
     targets: [

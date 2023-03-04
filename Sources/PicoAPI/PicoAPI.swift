@@ -1,5 +1,6 @@
 import Foundation
 import AWSLambdaRuntime
+import OpenAIKit
 import NIOFoundationCompat
 
 @main
@@ -19,15 +20,15 @@ struct PicoAPI: SimpleLambdaHandler {
     
     // http://127.0.0.1:7000/invoke
     // swift package --disable-sandbox archive
-    func handle(_ request: Request, context: LambdaContext) async throws -> Response {
+    func handle(_ request: Request, context: LambdaContext) async throws -> Chat {
         print("Received: \(request)")
         let completion = try await openAICall(request: request)
         print("response: \(completion)")
         return completion
     }
     
-    func openAICall(request: Request) async throws -> Response {
-        let completion = try await client.completion(prompt: request.prompt, maxTokens: request.maxTokens, temperature: request.temperature, userID: request.userID)
+    func openAICall(request: Request) async throws -> Chat {
+        let completion = try await client.completion(messages: request.messages, temperature: request.temperature, maxTokens: request.maxTokens, userID: request.userID)
         return completion
     }
 }
