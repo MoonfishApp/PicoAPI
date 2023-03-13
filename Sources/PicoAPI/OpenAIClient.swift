@@ -26,6 +26,7 @@ final class OpenAIClient {
     
     func completion(messages: [Chat.Message], temperature: Double = 1.0, maxTokens: Int = 100,  userID: String) async throws -> Chat {
       
+        print("sending messages: \(messages)")
         let completion = try await openAI.chats.create(model: Model.GPT3.gpt3_5Turbo, messages: messages, temperature: temperature, maxTokens: maxTokens, user: userID)
         return completion
     }
