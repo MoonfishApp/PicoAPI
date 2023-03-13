@@ -24,6 +24,42 @@ final class OpenAIClient {
         openAI = OpenAIKit.Client(httpClient: httpClient, configuration: configuration)
     }
     
+    func completion(messages: [Chat.Message], temperature: Double = 1.0, maxTokens: Int = 100,  userID: String) async throws -> Chat {
+      
+        print("sending messages: \(messages)")
+        let completion = try await openAI.chats.create(model: Model.GPT3.gpt3_5Turbo, messages: messages, temperature: temperature, maxTokens: maxTokens, user: userID)
+        return completion
+    }
+    
+    /*
+     
+     model: ModelID,
+     messages: [Chat.Message] = [],
+     temperature: Double = 1.0,
+     topP: Double = 1.0,
+     n: Int = 1,
+     stream: Bool = false,
+     stops: [String] = [],
+     presencePenalty: Double = 0.0,
+     frequencyPenalty: Double = 0.0,
+     logitBias: [String : Int] = [:],
+     user: String? = nil
+     */
+    
+    /*
+    let completion = try await client.chats.create(
+          model: Model.GPT3.gpt3_5Turbo,
+          messages: [
+              Chat.Message(
+                  role: "user",
+                  content: "Write a haiku"
+              )
+          ]
+      )
+    */
+    
+    
+    /*
     func completion(prompt: String, maxTokens: Int = 100, temperature: Double = 1.0, userID: String) async throws -> Response {
         do {
             let completion = try await openAI.completions.create(
@@ -43,4 +79,5 @@ final class OpenAIClient {
             return Response(completion: nil, OpenAIErrorMessage: error.error.message)
         }        
     }
+    */
 }

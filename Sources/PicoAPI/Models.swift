@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import OpenAIKit
 
 struct Request: Codable {
     let userID: String
-    let prompt: String
+//    let prompt: String
+    let messages: [Chat.Message]
     let maxTokens: Int
     let temperature: Double
 }
